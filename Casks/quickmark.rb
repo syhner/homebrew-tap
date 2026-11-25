@@ -7,14 +7,13 @@ cask "quickmark" do
   desc "Minimal app for marking up screenshots"
   homepage "https://github.com/syhner/quick-mark"
 
-  depends_on macos: ">= :sequoia"
+  depends_on macos: :sequoia
 
   app "QuickMark.app"
 
   # QuickMark isn't notarized: clear quarantine so macOS doesn't block the first launch.
-  postflight do
-    system_command "/usr/bin/xattr",
-                   args: ["-dr", "com.apple.quarantine", "#{appdir}/QuickMark.app"]
+  postflight_steps do
+    run "/usr/bin/xattr", args: ["-dr", "com.apple.quarantine", "{{appdir}}/QuickMark.app"]
   end
 
   zap trash: [
