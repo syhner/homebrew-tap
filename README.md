@@ -1,6 +1,6 @@
 # syhner/tap
 
-Homebrew casks for my apps.
+Homebrew casks.
 
 ```sh
 brew install --cask syhner/tap/<cask>
